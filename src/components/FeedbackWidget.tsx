@@ -67,14 +67,14 @@ export default function FeedbackWidget({
     <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8">
       <Dialog>
         <DialogTrigger asChild>
-          <Button
+            <Button
             variant="outline"
             size="icon"
-            className="rounded-full h-12 w-12 bg-gray-800 text-white hover:bg-gray-600 dark:bg-gray-200 dark:text-black dark:hover:bg-gray-400"
-          >
+            className="rounded-full h-12 w-12 bg-gray-800 text-white hover:bg-gray-600 dark:bg-white dark:text-black dark:hover:bg-gray-400"
+            >
             <MessageSquarePlus className="h-6 w-6" />
             <span className="sr-only">Open feedback form</span>
-          </Button>
+            </Button>
         </DialogTrigger>
         <DialogContent className="w-full max-w-full px-4 py-6 sm:max-w-[425px] sm:px-6 sm:py-8 h-auto max-h-[96vh] overflow-y-auto">
           <DialogHeader>
