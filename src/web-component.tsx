@@ -1,5 +1,6 @@
 import ReactDOM from 'react-dom/client';
 import FeedbackWidget from './components/FeedbackWidget';
+import tailwindCSS from './index.css?inline'; // Import Tailwind as a string
 
 class FeedbackWebComponent extends HTMLElement {
   projectId: number;
@@ -14,7 +15,11 @@ class FeedbackWebComponent extends HTMLElement {
 
   connectedCallback() {
     const root = document.createElement('div');
+    const style = document.createElement('style');
+    style.textContent = tailwindCSS; // Inject Tailwind styles
+    this.shadowRoot?.appendChild(style);
     this.shadowRoot?.appendChild(root);
+
     ReactDOM.createRoot(root).render(
       <FeedbackWidget
         projectId={this.projectId}
