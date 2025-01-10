@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { MessageSquarePlus, Star, Send } from 'lucide-react';
-import '../index.css' 
+import '../index.css';
 
 import {
   Dialog,
@@ -70,7 +70,7 @@ export default function FeedbackWidget({
           <Button
             variant="outline"
             size="icon"
-            className="rounded-full h-12 w-12 bg-primary text-primary-foreground hover:bg-primary/90"
+            className="rounded-full h-12 w-12 bg-gray-800 text-white hover:bg-gray-600 dark:bg-gray-200 dark:text-black dark:hover:bg-gray-400"
           >
             <MessageSquarePlus className="h-6 w-6" />
             <span className="sr-only">Open feedback form</span>
