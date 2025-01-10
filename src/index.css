@@ -1,8 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --primary: #ef4444;
+  --secondary: #3b82f6;
+  --muted-foreground: #6b7280;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary: #ef4444; /* redrose-500 */
+    --secondary: #3b82f6; /* blue-500 */
+    --muted-foreground: #9ca3af;
+  }
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-white text-black dark:bg-[#121212] dark:text-white;
+  scroll-behavior: smooth;
+}
+
 @layer base {
   :root {
-    --radius: 0.5rem
+    --radius: 0.5rem;
   }
 }
