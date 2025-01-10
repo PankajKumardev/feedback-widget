@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { MessageSquarePlus, Star, Send } from 'lucide-react';
-import './index.css';
+import '../index.css' 
+
 import {
   Dialog,
   DialogContent,
