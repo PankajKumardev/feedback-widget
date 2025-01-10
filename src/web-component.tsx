@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom/client';
 import FeedbackWidget from './components/FeedbackWidget';
-import tailwindCSS from './index.css?inline'; // Import Tailwind as a string
+import './index.css'; // Import TailwindCSS here
 
 class FeedbackWebComponent extends HTMLElement {
   projectId: number;
@@ -15,11 +15,22 @@ class FeedbackWebComponent extends HTMLElement {
 
   connectedCallback() {
     const root = document.createElement('div');
+
+    // Create a style element to hold the Tailwind CSS
     const style = document.createElement('style');
-    style.textContent = tailwindCSS; // Inject Tailwind styles
+    
+    // Insert TailwindCSS into the style element
+    style.textContent = `
+      @tailwind base;
+      @tailwind components;
+      @tailwind utilities;
+    `;
+    
+    // Append styles and root div to shadow DOM
     this.shadowRoot?.appendChild(style);
     this.shadowRoot?.appendChild(root);
 
+    // Render the React component inside the shadow DOM
     ReactDOM.createRoot(root).render(
       <FeedbackWidget
         projectId={this.projectId}
@@ -29,4 +40,5 @@ class FeedbackWebComponent extends HTMLElement {
   }
 }
 
+// Register the custom element
 customElements.define('feedback-widget', FeedbackWebComponent);
