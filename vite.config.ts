@@ -11,6 +11,7 @@ export default defineConfig({
       fileName: 'feedback-widget',
       formats: ['es', 'umd'],
     },
+    cssCodeSplit: false, // Ensure CSS is bundled inside the JS
     outDir: 'dist',
     rollupOptions: {
       external: [],
