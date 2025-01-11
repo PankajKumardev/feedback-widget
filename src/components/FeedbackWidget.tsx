@@ -33,27 +33,37 @@ export default function FeedbackWidget({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const API_URL = 'https://feedwall.vercel.app/api/feedback';
     try {
-      await axios.post('http://localhost:3000/api/feedback', {
-        projectid: projectId,
-        name,
-        email,
-        feedback,
-        rating,
-      });
+      await axios.post(
+        `${API_URL}/api/feedback`,
+        {
+          projectid: projectId,
+          name,
+          email,
+          feedback,
+          rating,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
       setIsSubmitted(true);
       setError(null);
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
       setError(
-        'An error occurred while submitting your feedback. Please try again.'
+        err.response?.data?.error ||
+          'An unexpected error occurred while submitting your feedback. Please try again.'
       );
     }
   };
 
   const PoweredByLink = () => (
     <a
-      href="http://localhost:3000/"
+      href="https://feedwall.vercel.app/"
       target="_blank"
       rel="noopener noreferrer"
       className="text-sm text-muted-foreground hover:underline mt-4 block text-center"
@@ -67,14 +77,14 @@ export default function FeedbackWidget({
     <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8">
       <Dialog>
         <DialogTrigger asChild>
-            <Button
+          <Button
             variant="outline"
             size="icon"
             className="rounded-full h-12 w-12 bg-primary text-primary-foreground"
-            >
+          >
             <MessageSquarePlus className="h-6 w-6" />
             <span className="sr-only">Open feedback form</span>
-            </Button>
+          </Button>
         </DialogTrigger>
         <DialogContent className="w-full max-w-full px-4 py-6 sm:max-w-[425px] sm:px-6 sm:py-8 h-auto max-h-[96vh] overflow-y-auto">
           <DialogHeader>
