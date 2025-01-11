@@ -34,7 +34,7 @@ export default function FeedbackWidget({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:3000/api/feedback', {
+      await axios.post('https://feedwall.vercel.app/api/feedback', {
         projectid: projectId,
         name,
         email,
@@ -53,7 +53,7 @@ export default function FeedbackWidget({
 
   const PoweredByLink = () => (
     <a
-      href="http://localhost:3000/"
+      href="https://feedwall.vercel.app/"
       target="_blank"
       rel="noopener noreferrer"
       className="text-sm text-muted-foreground hover:underline mt-4 block text-center"
