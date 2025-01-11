@@ -35,21 +35,13 @@ export default function FeedbackWidget({
     e.preventDefault();
     const API_URL = 'https://feedwall.vercel.app/api/feedback';
     try {
-      await axios.post(
-        `${API_URL}/api/feedback`,
-        {
-          projectid: projectId,
-          name,
-          email,
-          feedback,
-          rating,
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
+      await axios.post('https://feedwall.vercel.app/api/feedback', {
+        projectid: projectId,
+        name,
+        email,
+        feedback,
+        rating,
+      });
       setIsSubmitted(true);
       setError(null);
     } catch (err: any) {
